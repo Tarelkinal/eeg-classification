@@ -1,0 +1,33 @@
+feature_transformer:
+  _target_: src.data.FFTransformer
+  time_period_sec: 5
+  eeg_value_column_name: value
+  scaler: min_max
+  build_stat_feature: False
+  build_fft_raw_features: False
+  build_eeg_raw_features: True
+  drop_eeg_value_column: True
+  drop_fft_feature_column: True
+
+
+data_transformer:
+  _target_: src.data.DataTransformer
+  filter_values:
+    label:
+      - Movement time
+      - Sleep stage ?
+      - Sleep stage R
+      - Sleep stage 3
+      - Sleep stage 2
+      - Sleep stage 1
+  map_values:
+    label:
+      Sleep stage W: 0
+      Sleep stage 4: 1
+
+train_valid_transformer:
+  _target_: src.data.TrainValidSplitByColumnTransformer
+  split_column_name: ${general.raw_data.id_column_name}
+  target_column_name: ${general.raw_data.target_column_name}
+  valid_size: 0.1
+  random_state: ${general.random_state}

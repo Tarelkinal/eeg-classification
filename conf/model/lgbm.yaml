@@ -1,0 +1,13 @@
+lgbm:
+  _target_: lightgbm.LGBMClassifier
+  n_estimators: 1000
+  boosting_type: gbdt
+  num_leaves: 31
+  min_child_samples: 20
+  random_state: ${general.random_state}
+
+early_stopping:
+  _target_: lightgbm.early_stopping
+  stopping_rounds: 5
+
+eval_metric: roc_auc

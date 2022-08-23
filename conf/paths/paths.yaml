@@ -1,0 +1,4 @@
+raw_data: data/raw
+prep_data: data/prep
+report: reports/
+model: models/

@@ -1,0 +1,32 @@
+defaults:
+  - _self_
+  - model: lgbm
+  - files: files
+  - paths: paths
+  - general: general
+  - prep_features: prep_features
+  - baseline: baseline
+  - override /hydra/hydra_logging: colorlog
+  - override /hydra/job_logging: colorlog
+  - override hydra/sweeper: optuna
+  - override hydra/sweeper/sampler: tpe
+
+output_dir: outputs/${now:%Y-%m-%d_%H-%M-%S}
+experiment_name: eeg_raw_features
+
+hydra:
+  run:
+    dir: outputs/${now:%Y-%m-%d_%H-%M-%S}
+  job:
+    chdir: True
+  sweep:
+    dir: outputs/${now:%Y-%m-%d_%H-%M-%S}
+    subdir: ${hydra.job.override_dirname}
+  sweeper:
+    sampler:
+      seed: ${general.random_state}
+    direction: maximize
+    study_name: lgbm_hyper
+    storage: null
+    n_trials: 20
+    n_jobs: 2

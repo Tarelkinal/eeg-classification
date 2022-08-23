@@ -1,0 +1,13 @@
+hydra-colorlog==1.2.0
+hydra-core==1.2.0
+hydra-optuna-sweeper==1.2.0
+Jinja2==3.1.2
+lightgbm==3.3.2
+matplotlib==3.5.3
+numpy==1.22.4
+pandas==1.4.3
+pytest==7.1.2
+scikit-learn==1.0.2
+scipy==1.7.3
+seaborn==0.10.1
+tqdm==4.64.0

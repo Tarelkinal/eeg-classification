@@ -1,0 +1,15 @@
+# input data
+#train: train_samples.win500.npy
+#test: two_stage_test.npy
+train: train_tiny.npy
+test: test_tiny.npy
+
+report: report.yaml
+report_template: README_template.md
+
+# figures
+pr_fig_0: pr_fig_0.png
+pr_fig_1: pr_fig_1.png
+
+# model
+model: final_model.pickle

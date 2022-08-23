@@ -1,0 +1,4 @@
+random_state: 42
+raw_data:
+  target_column_name: label
+  id_column_name: person
