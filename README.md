@@ -68,10 +68,10 @@ Project Organization
 --------
 
 ## Solution
-1. Filter extra labels and provide label encoding with [DataTransformer](https:/github.com/Tarelkinal/eeg-classification/src/data/feature_transform.py)
-2. Train valid split based on `person_id` with [TrainValidSplitByColumnTransformer](https:/github.com/Tarelkinal/eeg-classification/src/data/feature_transform.py)
+1. Filter extra labels and provide label encoding with [DataTransformer](https://github.com/Tarelkinal/eeg-classification/blob/main/src/data/feature_transformer.py)
+2. Train valid split based on `person_id` with [TrainValidSplitByColumnTransformer](https://github.com/Tarelkinal/eeg-classification/blob/main/src/data/feature_transformer.py)
 3. Build fourier spector on raw EEG data, build statistics feature (mean, std, min, max, quantiles) in Delta, Theta 
-   and Alpha spectrum bands with [FFTransformer](https:/github.com/Tarelkinal/eeg-classification/src/data/feature_transform.py)
+   and Alpha spectrum bands with [FFTransformer](https://github.com/Tarelkinal/eeg-classification/blob/main/src/data/feature_transformer.py)
 4. Train `LGMBClassifier` with `EarlyStopping` on valid set
 5. Search hyperparams with `hydra optuna` plugin
 6. Make prediction and metrics calculation
