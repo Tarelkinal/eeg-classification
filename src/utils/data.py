@@ -1,7 +1,8 @@
-import pandas as pd
 from typing import List, Optional
+
 from dataclasses import dataclass, field
 from marshmallow.exceptions import ValidationError
+import pandas as pd
 
 
 @dataclass

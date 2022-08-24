@@ -1,8 +1,8 @@
 import os
-import yaml
-from pathlib import Path
+
 from jinja2 import Template
-import json
+from pathlib import Path
+import yaml
 
 
 def report_update(report_dict: dict, report_path: Path) -> None:

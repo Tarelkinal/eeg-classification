@@ -1,22 +1,23 @@
-import os
-import logging
-from typing import Optional, Union
 from textwrap import dedent
+from typing import Optional, Union
+import logging
+import os
 
+from hydra.utils import instantiate
+from omegaconf import DictConfig, OmegaConf
 from pathlib import Path
-import pickle
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import yaml
 from sklearn.metrics import \
     precision_recall_curve, roc_auc_score
-from omegaconf import DictConfig, OmegaConf
 import hydra
-from hydra.utils import instantiate
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import pickle
+import yaml
+
+from src.utils import report_update, report_render
 
 plt.rcParams.update({'font.size': 14})
-from src.utils import report_update, report_render
 
 
 def pr_evaluate(

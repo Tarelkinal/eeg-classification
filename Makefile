@@ -18,7 +18,7 @@ APP_NAME = 'eeg_pipeline'
 
 ## install requirements
 requirements:
-	python -m pip install -r requirements.txt
+	python -m pip install --user -r requirements.txt
 
 ## data preprocessing
 prep_data:

@@ -1,6 +1,6 @@
-import pytest
 import numpy as np
 import pandas as pd
+import pytest
 
 
 TRAIN_DATA_PATH = 'tests/data/train_tiny.npy'
