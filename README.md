@@ -178,10 +178,10 @@ Project Organization
 ### Best PR plots (Full dataset - Fourier spector raw features)
 
 #### Sleep stage 4 PR-curve   
-![Sleep stage 4 PR-curve](reports/pr_fig_1.png)
+![Sleep stage 4 PR-curve](reports/fourier_spector_raw-pr_fig_1.png)
 
 #### Sleep stage W PR-curve
-![Sleep stage W PR-curve](reports/pr_fig_0.png)
+![Sleep stage W PR-curve](reports/fourier_spector_raw-pr_fig_0.png)
 
 ## TO DO NEXT
 Find optimal dataset size:
