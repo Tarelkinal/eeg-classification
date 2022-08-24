@@ -80,11 +80,10 @@ target/
 .ipynb_checkpoints/
 
 # exclude data from source control by default
-/data/
-/models/
+/data/*
+/models/*
 /runs/
 /outputs/
-/pytorch-lifestream/
 
 # Mac OS-specific storage files
 .DS_Store
