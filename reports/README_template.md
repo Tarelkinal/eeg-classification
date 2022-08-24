@@ -66,7 +66,6 @@ Project Organization
     └── tests   <- unit tests
 
 --------
-1. https://habr.com/ru/post/479164/
 
 ## Solution
 1. Filter extra labels and provide label encoding with [DataTransformer](https:/github.com/Tarelkinal/eeg-classification/src/data/feature_transform.py)
@@ -77,19 +76,34 @@ Project Organization
 5. Search hyperparams with `hydra optuna` plugin
 6. Make prediction and metrics calculation
 
-## Results
-### ROC_AUC
-|dataset  |roc_auc |
---- | ---|
-|train roc auc|{{train_roc_auc_score}}|
-|valid roc auc|{{valid_roc_auc_score}}|
-|test roc auc|{{test_roc_auc_score}}|
 
-### Presicion-Recall
-|label |precision  | recall|
---- | --- | ---|
-|sleep stage 4|{{precision_1}}|{{recall_1}}|
-|sleep stage W|{{precision_0}}|{{recall_0}}|
+## Results
+
+<table>
+{% for item in items %}
+<TR>
+   <TD class="c2">{{item.experiment_name}}</TD>
+   <TD class="c3">{{item.num_features}}</TD>
+   <TD class="c3">{{item.num_train_objects}}</TD>
+   <TD class="c3">{{item.num_estimators}}</TD>
+   <TD class="c3">{{item.test_roc_auc_score}}</TD>
+   <TD class="c4">{{item.precision_ss4}}</TD>
+   <TD class="c5">{{item.recall_ss4}}</TD>
+   <TD class="c6">{{item.precision_ssW}}</TD>
+   <TD class="c7"><SPAN>{{item.recall_ssW}}</SPAN></TD>
+</TR>
+{% endfor %}
+</table>
+
+* **small dataset**: deleted all person without Sleep stage 4
+* **precision-recall evaluation**: get max precision with recall not worse than baseline recall
+
+### Conclusions
+* Using raw Fourier spector gets the best pr-metrics, which do not degrade on a small dataset
+* The use of raw data also gives a good result, but loses in the complexity of the model: a large depth of boosting is required   
+* Using statistics of Fourier spector bands gets the simplest model 
+
+### Best PR plots (Full dataset - Fourier spector raw features)
 
 #### Sleep stage 4 PR-curve   
 ![Sleep stage 4 PR-curve](reports/pr_fig_1.png)
@@ -98,10 +112,13 @@ Project Organization
 ![Sleep stage W PR-curve](reports/pr_fig_0.png)
 
 ## TO DO NEXT
+Find optimal dataset size:
+   * discover dependency metrics on dataset size
+
 Use Deep Learning to:
    * extract features from raw EEG data
    * extract features from Fourier spectrum
-   * somehow union features in model architecture (tho-handed network, concat...)
+   * union features in model architecture (tho-handed network, concat...)
    * taking into account the time order in the person context
    * use negative selection to obtain hard object with 'Sleep stage W' label
    * unsupervised pretrain model to get EEG data embedding

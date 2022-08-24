@@ -24,11 +24,17 @@ def report_render(template_path: Path, report_path: Path) -> None:
     with open(report_path, 'r') as f_in:
         report = yaml.safe_load(f_in)
 
+    item_list = [report['experiments']['head']]
+    for k, v in report['experiments'].items():
+        if k == 'head':
+            continue
+        item_list.append(v)
+
     with open(template_path, 'r') as f_in:
         readme = f_in.readlines()
 
     t = Template(''.join(readme))
-    readme_rendered = t.render(**report)
+    readme_rendered = t.render(items=item_list)
 
     template_path = Path(f'{project_dir}/README.md')
     with open(template_path, 'w') as f_out:

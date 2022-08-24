@@ -1,26 +1,84 @@
-best_model_params_path: outputs/2022-08-23_20-25-32
-eeg_raw_features/precision_0: 0.96249
-eeg_raw_features/precision_1: 0.59157
-eeg_raw_features/recall_0: 0.52321
-eeg_raw_features/recall_1: 0.92163
-eeg_raw_features/test_roc_auc_score: 0.88085
-eeg_raw_features/train_roc_auc_score: 1.0
-eeg_raw_features/valid_roc_auc_score: 0.99564
-precision_0: 0.8984
-precision_1: 0.70905
-recall_0: 0.57626
-recall_1: 0.9403
-spector_raw_features/precision_0: 0.9991
-spector_raw_features/precision_1: 0.99407
-spector_raw_features/recall_0: 0.69605
-spector_raw_features/recall_1: 0.92494
-spector_raw_features/test_roc_auc_score: 0.99674
-spector_raw_features/train_roc_auc_score: 1.0
-spector_raw_features/valid_roc_auc_score: 0.99995
-spector_stat_features/precision_0: 0.93348
-spector_stat_features/precision_1: 0.53888
-spector_stat_features/recall_0: 0.51945
-spector_stat_features/recall_1: 0.92163
-spector_stat_features/test_roc_auc_score: 0.89974
-spector_stat_features/train_roc_auc_score: 0.99995
-spector_stat_features/valid_roc_auc_score: 0.937
+best_model_params_path: outputs/2022-08-24_13-26-04
+experiments:
+  EEG raw features:
+    experiment_name: EEG raw features
+    num_estimators: 570
+    num_features: 1000
+    num_train_objects: 205356
+    precision_ss4: 0.96826
+    precision_ssW: 0.99952
+    recall_ss4: 0.92166
+    recall_ssW: 0.55756
+    test_roc_auc_score: 0.98952
+    train_roc_auc_score: 1.0
+    valid_roc_auc_score: 0.9998
+  EEG raw features; small dataset:
+    experiment_name: EEG raw features; small dataset
+    num_estimators: 284
+    num_features: 1000
+    num_train_objects: 83676
+    precision_ss4: 0.94835
+    precision_ssW: 0.99686
+    recall_ss4: 0.92154
+    recall_ssW: 0.55128
+    test_roc_auc_score: 0.98419
+    train_roc_auc_score: 1.0
+    valid_roc_auc_score: 0.99971
+  Fourier spector raw:
+    experiment_name: Fourier spector raw
+    num_estimators: 214
+    num_features: 200
+    num_train_objects: 205356
+    precision_ss4: 0.99922
+    precision_ssW: 0.99938
+    recall_ss4: 0.93799
+    recall_ssW: 0.6469
+    test_roc_auc_score: 0.99885
+    train_roc_auc_score: 1.0
+    valid_roc_auc_score: 0.99961
+  Fourier spector raw; small dataset:
+    experiment_name: Fourier spector raw; small dataset
+    num_estimators: 106
+    num_features: 200
+    num_train_objects: 83676
+    precision_ss4: 0.99908
+    precision_ssW: 0.99954
+    recall_ss4: 0.92325
+    recall_ssW: 0.57666
+    test_roc_auc_score: 0.99819
+    train_roc_auc_score: 1.0
+    valid_roc_auc_score: 0.99998
+  Fourier spector statistics:
+    experiment_name: Fourier spector statistics
+    num_estimators: 10
+    num_features: 42
+    num_train_objects: 205356
+    precision_ss4: 0.91585
+    precision_ssW: 0.9382
+    recall_ss4: 0.92154
+    recall_ssW: 0.83333
+    test_roc_auc_score: 0.95467
+    train_roc_auc_score: 0.98652
+    valid_roc_auc_score: 0.9926
+  Fourier spector statistics; small dataset:
+    experiment_name: Fourier spector statistics; small dataset
+    num_estimators: 64
+    num_features: 42
+    num_train_objects: 83676
+    precision_ss4: 0.85498
+    precision_ssW: 0.98064
+    recall_ss4: 0.92154
+    recall_ssW: 0.52083
+    test_roc_auc_score: 0.96276
+    train_roc_auc_score: 0.99724
+    valid_roc_auc_score: 0.99103
+  head:
+    experiment_name: experiment name
+    num_estimators: num estimators
+    num_features: num features
+    num_train_objects: num train objects
+    precision_ss4: precision ss4
+    precision_ssW: precision ssW
+    recall_ss4: recall ss4
+    recall_ssW: recall ssW
+    test_roc_auc_score: ROC AUC

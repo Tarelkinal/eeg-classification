@@ -12,7 +12,7 @@ defaults:
   - override hydra/sweeper/sampler: tpe
 
 output_dir: outputs/${now:%Y-%m-%d_%H-%M-%S}
-experiment_name: eeg_raw_features
+experiment_name: Fourier spector statistics; small dataset
 
 hydra:
   run:
@@ -29,4 +29,4 @@ hydra:
     study_name: lgbm_hyper
     storage: null
     n_trials: 20
-    n_jobs: 2
+    n_jobs: 1

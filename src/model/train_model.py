@@ -38,7 +38,8 @@ def main(cfg: DictConfig):
         eval_set=[(X_valid, y_valid)],
         callbacks=[early_stopping]
     )
-
+    best_iter = model.best_iteration_
+    report_update({'best_iter': best_iter}, Path(f'{os.getcwd()}/best_iter.yaml'))
     score = roc_auc_score(y_valid, model.predict_proba(X_valid)[:, 1])
 
     report = {'best_model_params_path': f'{cfg.output_dir}'}

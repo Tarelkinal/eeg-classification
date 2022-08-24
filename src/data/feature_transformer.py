@@ -209,8 +209,6 @@ class DataTransformer(BaseEstimator, TransformerMixin):
         for k, v in self.map_values.items():
             df[k] = df[k].map(v)
 
-        df = df.reset_index().drop(columns=['index'])
-
         return df
 
 
@@ -221,11 +219,13 @@ class TrainValidSplitByColumnTransformer(BaseEstimator, TransformerMixin):
             target_column_name: str,
             valid_size: float,
             random_state: int = 0,
+            drop_only_negative: bool = False
     ):
         self.split_column_name = split_column_name
         self.valid_size = valid_size
         self.random_state = random_state
         self.target_column_name = target_column_name
+        self.drop_only_negative = drop_only_negative
 
     def fit(self, df: pd.DataFrame, y=None):
         split_column_unique_values = df[self.split_column_name].unique()
@@ -234,6 +234,14 @@ class TrainValidSplitByColumnTransformer(BaseEstimator, TransformerMixin):
             raise ValueError(
                 f'data can not be split by column {self.split_column_name}'
             )
+
+        if self.drop_only_negative:
+            df_gr = df[[self.split_column_name, self.target_column_name]] \
+                    .groupby(self.split_column_name).mean()
+
+            # filter only values with mean target > 0
+            split_column_unique_values = df_gr \
+                .where(df_gr != 0).dropna().index.tolist()
 
         train, valid = train_test_split(
             split_column_unique_values,
@@ -259,7 +267,11 @@ class TrainValidSplitByColumnTransformer(BaseEstimator, TransformerMixin):
     def transform(self, df: pd.DataFrame, y=None):
         check_is_fitted(self, ['train_value_list', 'valid_value_list'])
         df = df.copy()
+        split_column_value_list = self.train_value_list + self.valid_value_list
+        df = df[df[self.split_column_name].isin(split_column_value_list)]
         df['valid_flag'] = False
         df.loc[df[self.split_column_name].isin(self.valid_value_list), 'valid_flag'] = True
+
+        df = df.reset_index().drop(columns=['index'])
 
         return df

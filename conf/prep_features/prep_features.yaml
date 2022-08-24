@@ -3,9 +3,9 @@ feature_transformer:
   time_period_sec: 5
   eeg_value_column_name: value
   scaler: min_max
-  build_stat_feature: False
+  build_stat_feature: True
   build_fft_raw_features: False
-  build_eeg_raw_features: True
+  build_eeg_raw_features: False
   drop_eeg_value_column: True
   drop_fft_feature_column: True
 
@@ -31,3 +31,4 @@ train_valid_transformer:
   target_column_name: ${general.raw_data.target_column_name}
   valid_size: 0.1
   random_state: ${general.random_state}
+  drop_only_negative: True
