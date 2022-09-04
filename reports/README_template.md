@@ -1,7 +1,7 @@
-# EEG data binary spleep stage classification
+# [EEG data binary spleep stage classification](https://github.com/Tarelkinal/eeg-classification/blob/main/docs/EEG_classification_task_descr.pdf)
 ## How to ran
 Dag of train pipeline is implemented with `Makefile`.
-
+git
 Config managment is implemented with `hydra`.
 1. Clone project and move to project dir
    ```bash
@@ -35,20 +35,21 @@ Project Organization
 
     ├── Makefile           <- Makefile with dag of train pipeline.
     ├── README.md          <- Project description.
+    ├── docs               <- Task description.
     ├── data
-    │   ├── prep           <- Path to store preprocessed datasets reade to use in trainig
-    │   └── raw            <- Path to store raw input data
+    │   ├── prep           <- Path to store preprocessed datasets reade to use in trainig.
+    │   └── raw            <- Path to store raw input data.
     │
     ├── README.md          <- How to use.
     ├── models             <- Trained and serialized models.
-    ├── outputs            <- Path to store hydra run logs, appear after first run
+    ├── outputs            <- Path to store hydra run logs, appear after first run.
     ├── notebooks
     │   ├── 2.1-baseline-fft.ipynb  <- baseline-2: lgbmClassifier on fourier transformed eeg data
     │   ├── 2.0-baseline.ipynd      <- baseline-1: lgbmClassifier on flatten eeg data
     │   └── 1.0-EDA.ipynb           <- Exploratory data analisis
     │
     ├── reports     <- Training reports with metrics obtained and figures.
-    ├── conf        <- Path to store hydra configs
+    ├── conf        <- Path to store hydra configs.
     ├── src                
     │   ├── data   
     │   │   ├── prep_features.py            <- data preprocessing pipeline
@@ -63,7 +64,7 @@ Project Organization
     │       ├── predict_model.py    <- trian model with best hyperparams and make predict
     │       └── train_model.py      <- find best models hyperparams based on valid set estimation
     │
-    └── tests   <- unit tests
+    └── tests   <- Unit tests
 
 --------
 
