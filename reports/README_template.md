@@ -1,5 +1,5 @@
 # [EEG data binary spleep stage classification](https://github.com/Tarelkinal/eeg-classification/blob/main/docs/EEG_classification_task_descr.pdf)
-## How to ran
+## How to run
 Dag of train pipeline is implemented with `Makefile`.
 git
 Config managment is implemented with `hydra`.
